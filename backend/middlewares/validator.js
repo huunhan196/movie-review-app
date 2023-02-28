@@ -12,6 +12,16 @@ const userValidator = [
     .withMessage("Password must be at least 8 characters long"),
 ];
 
+const passwordValidator = [
+  check("password")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Password is missing")
+    .isLength({ min: 8 })
+    .withMessage("Password must be at least 8 characters long"),
+];
+
 const validate = async (req, res, next) => {
   const errors = validationResult(req).array();
   if (errors.length) {
@@ -20,4 +30,4 @@ const validate = async (req, res, next) => {
   next();
 };
 
-module.exports = { userValidator, validate };
+module.exports = { userValidator, passwordValidator, validate };

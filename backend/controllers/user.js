@@ -11,6 +11,15 @@ const create = async (req, res) => {
   const newUser = new User({ name, email, password });
   await newUser.save();
 
+  //   var transport = nodemailer.createTransport({
+  //     host: "sandbox.smtp.mailtrap.io",
+  //     port: 2525,
+  //     auth: {
+  //       user: "ac1241f25f17e6",
+  //       pass: "f8cf6d89218ed8"
+  //     }
+  //   });
+
   res.status(201).send({ user: newUser });
 };
 

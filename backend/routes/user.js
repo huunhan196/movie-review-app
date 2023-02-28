@@ -1,5 +1,9 @@
 const express = require("express");
-const { create } = require("../controllers/user");
+const {
+  create,
+  verifyEmail,
+  resendVerificationEmail,
+} = require("../controllers/user");
 const { userValidator, validate } = require("../middlewares/validator");
 // const auth = require("../middlewares/auth");
 
@@ -10,5 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/create", userValidator, validate, create);
+router.post("/verify-email", verifyEmail);
+router.post("/resend-email-verification", resendVerificationEmail);
 
 module.exports = router;
